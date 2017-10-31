@@ -4,17 +4,22 @@ describe User do
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without a first name" do
-        user = User.new(last_name: "Smith", email: "joe@gmail.com")
+        user = User.new(last_name: "Smith", email: "joe@gmail.com", password: "password")
         expect(user).to be_invalid
       end
 
       it "is invalid without a last name" do
-        user = User.new(first_name: "Joe", email: "joe@gmail.com")
+        user = User.new(first_name: "Joe", email: "joe@gmail.com", password: "password")
         expect(user).to be_invalid
       end
 
       it "is invalid without an email" do
-        user = User.new(first_name: "Joe", last_name: "Smith")
+        user = User.new(first_name: "Joe", last_name: "Smith", password: "password")
+        expect(user).to be_invalid
+      end
+
+      it "is invalid without a password" do
+        user = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com")
         expect(user).to be_invalid
       end
 
@@ -26,8 +31,8 @@ describe User do
     end
 
     context "valid attributes" do
-      it "is valid with a first_name, last_name and email" do
-        user = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com")
+      it "is valid with a first_name, last_name, password and email" do
+        user = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
         expect(user).to be_valid
       end
     end
