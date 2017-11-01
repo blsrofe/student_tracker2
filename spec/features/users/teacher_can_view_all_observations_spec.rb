@@ -36,6 +36,7 @@ describe "teacher can view all observations" do
       expect(page).to have_content(observation.type)
       expect(page).to have_content(observation.parent_viewable?)
       # expect(page).to have_content(observation.tone)
+      expect(page).to have_content("View Full Observation")
     end
   end
 end

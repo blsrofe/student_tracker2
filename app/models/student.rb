@@ -4,7 +4,8 @@ class Student < ApplicationRecord
 
   has_many :klass_students, dependent: :destroy
   has_many :klasses, through: :klass_students, dependent: :destroy
-  
+  has_many :observations, dependent: :destroy
+
   def full_name
     "#{first_name} #{last_name}"
   end
