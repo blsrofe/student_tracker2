@@ -3,12 +3,11 @@
 <div class="card-deck">
   <% @klasses.each do |klass| %>
   <div class="card klass">
-    <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-block">
       <h3 class="card-title"> <%= klass.title %></h3>
       <h5 class="card-title"><%= klass.school_year %></h5>
       <p class="card-text"><%= klass.description %></p>
-      <a href="#" class="btn btn-primary">Students</a>
+      <%= link_to "Students", klass_path(klass), class: "btn btn-primary" %>
     </div>
   </div>
   <% end %>
