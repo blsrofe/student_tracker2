@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "As a teacher" do
   it "can view thier classes on the user dashboard" do
-    user = User.create!(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
+    user = create(:user)
+    klasses = create_list(:klass, 3)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/dashboard"
