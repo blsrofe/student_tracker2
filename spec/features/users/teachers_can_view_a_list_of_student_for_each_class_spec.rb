@@ -1,13 +1,5 @@
 require "rails_helper"
 
-# As a teacher
-# When I visit /class/:id/students
-# Then I should see the class name
-# And i should see a list of students in that class
-# And for each student I should see thier full name and grade level
-# And I should see I link to view their observations
-# And I should see a link to add an observation
-
 describe "teacher visits class show page and sees a list of students" do
   it "should be able to click on add or view observations" do
     user = create(:user)
