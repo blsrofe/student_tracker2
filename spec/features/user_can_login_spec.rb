@@ -15,6 +15,6 @@ describe "As a registered user" do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Logout")
-    expect(page).to have_content("Welcome, Joe")
+    expect(page).to have_content("Welcome Joe")
   end
 end
