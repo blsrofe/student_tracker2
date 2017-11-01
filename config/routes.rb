@@ -7,4 +7,8 @@ Rails.application.routes.draw do
    delete '/logout', to: "sessions#destroy"
 
    get '/dashboard', to: "dashboard#index"
+
+   resources :klasses, except: [:index] do
+     resources :students
+   end
 end
