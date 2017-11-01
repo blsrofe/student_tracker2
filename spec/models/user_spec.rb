@@ -37,4 +37,11 @@ describe User do
       end
     end
   end
+
+  describe "relationships" do
+    it "has many classes" do
+      user = create(:user)
+      expect(user).to respond_to(:klasses)
+    end
+  end
 end

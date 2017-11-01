@@ -37,4 +37,16 @@ describe Student do
       end
     end
   end
+
+  describe "relationships" do
+    it "has many klasses" do
+      student = create(:student)
+      expect(student).to respond_to(:klasses)
+    end
+
+    it "has many klass_students" do
+      student = create(:student)
+      expect(student).to respond_to(:klass_students)
+    end
+  end
 end

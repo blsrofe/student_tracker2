@@ -7,5 +7,4 @@ class User < ApplicationRecord
   enum role: ["teacher", "admin", "guardian"]
 
   has_many :klasses
-  has_many :student, through: :klasses
 end
