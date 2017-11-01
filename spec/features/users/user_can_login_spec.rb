@@ -2,15 +2,15 @@ require "rails_helper"
 
 describe "As a registered user" do
   it "I can log in" do
-    user = User.create!(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
+    user = create(:user)
 
     visit '/'
     click_link "Login"
 
     expect(current_path).to eq(login_path)
 
-    fill_in "Email", with: "joe@gmail.com"
-    fill_in "Password", with: "password"
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
     find('.login').click
 
     expect(current_path).to eq(dashboard_path)

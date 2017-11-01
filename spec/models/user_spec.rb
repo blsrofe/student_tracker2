@@ -24,8 +24,8 @@ describe User do
       end
 
       it "is invalid without a unique email" do
-        user = User.create(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com")
-        user_1 = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com")
+        user = User.create(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
+        user_1 = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
         expect(user_1).to be_invalid
       end
     end
@@ -35,6 +35,13 @@ describe User do
         user = User.new(first_name: "Joe", last_name: "Smith", email: "joe@gmail.com", password: "password")
         expect(user).to be_valid
       end
+    end
+  end
+
+  describe "relationships" do
+    it "has many classes" do
+      user = create(:user)
+      expect(user).to respond_to(:klasses)
     end
   end
 end

@@ -5,4 +5,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   enum role: ["teacher", "admin", "guardian"]
+
+  has_many :klasses
 end

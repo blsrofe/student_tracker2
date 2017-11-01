@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031033108) do
+ActiveRecord::Schema.define(version: 20171101043155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "klass_students", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "klass_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["klass_id"], name: "index_klass_students_on_klass_id"
+    t.index ["student_id"], name: "index_klass_students_on_student_id"
+  end
+
+  create_table "klasses", force: :cascade do |t|
+    t.string "title"
+    t.string "school_year"
+    t.string "description"
+    t.bigint "user_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_klasses_on_student_id"
+    t.index ["user_id"], name: "index_klasses_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "grade_level"
+    t.text "notes"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -25,4 +56,8 @@ ActiveRecord::Schema.define(version: 20171031033108) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "klass_students", "klasses"
+  add_foreign_key "klass_students", "students"
+  add_foreign_key "klasses", "students"
+  add_foreign_key "klasses", "users"
 end
