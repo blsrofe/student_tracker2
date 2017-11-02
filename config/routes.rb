@@ -4,18 +4,23 @@ Rails.application.routes.draw do
 
    get '/login', to: "sessions#new"
    post '/login', to: "sessions#create"
-   delete '/logout', to: "sessions#destroy"
+   get '/logout', to: "sessions#destroy"
 
    get '/dashboard', to: "dashboard#index"
+
 
    resources :klasses do
      resources :students, only: [:index]
    end
 
-   resources :students, except: [:index] do
-     resources :observations, only: [:index]
-   end
+  namespace :students do
+    scope "/:id/" do
+      resources :observations
+    end
+  end
 
-   resources :observations, execpt: [:index]
+   resources :observations
+
+   resources :users, only: [:edit, :update]
 
 end

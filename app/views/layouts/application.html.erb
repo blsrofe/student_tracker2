@@ -14,7 +14,7 @@
           <a class="nav-link" href="/">Student Tracker<span class="sr-only">(current)</span></a>
 
         <% if logged_in? %>
-            <button class="btn btn-link" type="button" name="logout"><%= link_to "Logout", logout_path, method: :delete, class: "logout" %></button>
+            <%= link_to "Logout", logout_path, class: "logout btn btn-link" %>
             <span class="navbar-text">Welcome <%= current_user.first_name %></span>
         <% else %>
             <button class="btn btn-outline-success" type="button"><a class="nav-link" href="/login">Login</a></button>
