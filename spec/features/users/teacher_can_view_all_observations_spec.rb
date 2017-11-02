@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 # As a teacher
 # When I visit "/klasses/:id/students"
@@ -17,9 +17,10 @@ describe "teacher can view all observations" do
     students = create_list(:student, 25)
     klass.students << students
     student = Student.first
+    observations = create_list(:observation, 10)
+    student.observations << observations
     observation = Observation.first
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     visit klass_students_path(klass)
     within(first(".student")) do
       click_on "View Observations"
@@ -27,17 +28,16 @@ describe "teacher can view all observations" do
 
     expect(current_path).to eq(student_observations_path(student))
     expect(page).to have_content(student.full_name)
-    expect(page).to have_content(student.grade_level)
-
+save_and_open_page
     expect(page).to have_css(".observation", count: 10)
     within(first(".observation")) do
       expect(page).to have_content(observation.date)
       expect(page).to have_content(observation.comment)
       expect(page).to have_content(observation.subject)
-      expect(page).to have_content(observation.type)
+      expect(page).to have_content(observation.ob_type)
       expect(page).to have_content(observation.parent_viewable?)
       # expect(page).to have_content(observation.tone)
-      expect(page).to have_content("View Full Observation")
+      expect(page).to have_content("View")
     end
   end
 end

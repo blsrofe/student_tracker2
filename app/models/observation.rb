@@ -1,5 +1,5 @@
 class Observation < ApplicationRecord
-  validates :comment, :date, :subject, :ob_type, :parent_viewable, presence: true
+  validates :comment, :date, :subject, :ob_type, presence: true
 
   belongs_to :student
   belongs_to :user

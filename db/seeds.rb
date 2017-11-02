@@ -9,6 +9,7 @@ User.destroy_all
 Klass.destroy_all
 KlassStudent.destroy_all
 Student.destroy_all
+Observation.destroy_all
 
 user = User.create(first_name: "Becki", last_name: 'Srofe', email: "bsrofe23@gmail.com", password: "password")
 
@@ -37,4 +38,11 @@ students.each do |student|
   KlassStudent.create(student: student, klass: class_1)
   class_3 = Klass.last
   KlassStudent.create(student: student, klass: class_3)
+  5.times do |observation|
+    comment = Faker::ChuckNorris.fact
+    date = Faker::Date.between(60.days.ago, Date.today)
+    subject = Faker::Job.field
+    observation = Observation.create!(comment: comment, date: date, subject: subject, ob_type: "improvement_needed", user: user, student: student)
+    puts "Create observation for #{student.first_name}"
+  end
 end

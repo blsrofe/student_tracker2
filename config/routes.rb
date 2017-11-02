@@ -13,7 +13,9 @@ Rails.application.routes.draw do
    end
 
    resources :students, except: [:index] do
-     resources :observations
+     resources :observations, only: [:index]
    end
+
+   resources :observations, execpt: [:index]
 
 end
