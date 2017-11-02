@@ -43,5 +43,10 @@ describe User do
       user = create(:user)
       expect(user).to respond_to(:klasses)
     end
+
+    it "has many observations" do
+      user = create(:user)
+      expect(user).to respond_to(:observations)
+    end
   end
 end

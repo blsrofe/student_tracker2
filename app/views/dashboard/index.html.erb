@@ -1,14 +1,3 @@
 <h1>Dashboard</h1>
-
-<div class="card-deck">
-  <% @klasses.each do |klass| %>
-  <div class="card klass">
-    <div class="card-block">
-      <h3 class="card-title"> <%= klass.title %></h3>
-      <h5 class="card-title"><%= klass.school_year %></h5>
-      <p class="card-text"><%= klass.description %></p>
-      <%= link_to "Students", klass_path(klass), class: "btn btn-primary" %>
-    </div>
-  </div>
-  <% end %>
-</div>
+<%= link_to "View Classes", klasses_path, class: "btn btn-primary" %>
+<%= link_to "View Observations", dashboard_path, class: "btn btn-primary" %>

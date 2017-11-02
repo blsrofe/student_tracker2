@@ -8,7 +8,14 @@ Rails.application.routes.draw do
 
    get '/dashboard', to: "dashboard#index"
 
-   resources :klasses, except: [:index] do
-     resources :students
+   resources :klasses do
+     resources :students, only: [:index]
    end
+
+   resources :students, except: [:index] do
+     resources :observations, only: [:index]
+   end
+
+   resources :observations, execpt: [:index]
+
 end

@@ -48,5 +48,10 @@ describe Student do
       student = create(:student)
       expect(student).to respond_to(:klass_students)
     end
+
+    it "has many observations" do
+      student = create(:student)
+      expect(student).to respond_to(:observations)
+    end
   end
 end

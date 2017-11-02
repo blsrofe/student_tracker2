@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum role: ["teacher", "admin", "guardian"]
 
   has_many :klasses, dependent: :destroy
+  has_many :observations, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"
