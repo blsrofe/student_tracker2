@@ -1,14 +1,5 @@
 require "rails_helper"
 
-# As a teacher
-# When I visit /dashboard
-# And I click "Update Account"
-# Then my path should be "user/:id/edit"
-# and I should see a form to update my name, email, and password
-# And when I click "Update"
-# My path should be "/dashboard"
-# And I should see my info updated on the screen
-
 describe "teachers can update thier account information" do
   it "from the dashboard page" do
     user = create(:user)
