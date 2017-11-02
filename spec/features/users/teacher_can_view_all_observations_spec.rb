@@ -11,7 +11,7 @@ require "rails_helper"
 # And I should see a link to "View full Observation"
 
 describe "teacher can view all observations" do
-  it "from the student show page" do
+  it "for a specific student" do
     user = create(:user)
     klass = create(:klass, user: user)
     students = create_list(:student, 25)
@@ -20,13 +20,14 @@ describe "teacher can view all observations" do
     observation = Observation.first
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit "/klasses/:id/students"
-    click_on "View Observations"
+    visit klass_students_path(klass)
+    within(first(".student")) do
+      click_on "View Observations"
+    end
 
     expect(current_path).to eq(student_observations_path(student))
     expect(page).to have_content(student.full_name)
     expect(page).to have_content(student.grade_level)
-    expect(page).to have_content(student.email)
 
     expect(page).to have_css(".observation", count: 10)
     within(first(".observation")) do

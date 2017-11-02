@@ -2,11 +2,12 @@ class CreateObservations < ActiveRecord::Migration[5.1]
   def change
     create_table :observations do |t|
       t.string :subject
-      t.string :type
+      t.string :ob_type
       t.text :comment
       t.date :date
       t.boolean :parent_viewable, default: false
       t.references :student, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

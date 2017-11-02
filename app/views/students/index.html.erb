@@ -1,7 +1,6 @@
 <h1> <%=@klass.title %> </h1>
 <h3> Teacher: <%= @klass.user.full_name %> </h3>
 <h3> Year: <%= @klass.school_year %> </h3>
-<p> <%= @klass.description %> </p>
 
 <%= link_to '<< Back To Classes', dashboard_path %>
 <table class="table table-bordered table-hover">
@@ -15,12 +14,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @klass.students.each do |student| %>
+    <% @students.each do |student| %>
     <tr class="student">
       <th scope="row"></th>
       <td> <%= student.full_name %></td>
       <td> <%= student.grade_level %></td>
-      <td> <a href="#" class="btn btn-primary">View Observations</a></td>
+      <td><%= link_to "View Observations", student_observations_path(student), class: "btn btn-primary" %></td>
       <td> <a href="#" class="btn btn-primary">New Observations</a></td>
     </tr>
     <% end %>
