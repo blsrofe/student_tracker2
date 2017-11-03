@@ -3,10 +3,17 @@ require "rails_helper"
 describe "As a registered user" do
   it "I can log out" do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit "/"
-    click_link "Logout"
+    visit '/'
+    click_link "Login"
+
+    expect(current_path).to eq(login_path)
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    find('.login').click
+
+    find(".logout").click
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Login")
