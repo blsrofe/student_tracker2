@@ -1,0 +1,15 @@
+
+<div class="card w-50">
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"> Observation for <%= @observation.student.full_name %> </h4>
+      <h6 class="card-subtitle mb-2 text-muted"> Date:  <%= @observation.date %> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Teacher: <%= @observation.user.full_name %> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Subject: <%= @observation.subject%> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Type: <%= @observation.ob_type %> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Viewable by Parents? <%= @observation.parent_viewable %> </h6>
+      <p class="card-text"> <%= @observation.comment %> </p>
+      <%= link_to "Create New Observation", new_observation_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>
