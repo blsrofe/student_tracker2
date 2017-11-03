@@ -12,4 +12,16 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def students
+    klasses.first.students.map do |student|
+      student.full_name
+    end
+  end
+
+  def klass_names
+    klasses.map do |klass|
+      klass.title
+    end
+  end
 end
