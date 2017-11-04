@@ -14,20 +14,16 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
     if @observation.save
-      # flash[:message] = "Observation created!"
+      flash[:message] = "Observation created!"
       redirect_to observations_path
     else
-      # flash[:message] = "Observation was not created. Please make sure all fields are filled in."
+      flash[:message] = "Observation was not created. Please make sure all fields are filled in."
       redirect_to new_observation_path
     end
   end
 
   def edit
     @observation = Observation.find(params[:id])
-    if @observation.user_id != current_user.id
-      flash[:message] = "You may not update an observation that you did not write."
-      redirect_to observation_path(@observation)
-    end
   end
 
   def update
