@@ -13,7 +13,6 @@ class ObservationsController < ApplicationController
 
   def create
     @observation = Observation.new(observation_params)
-    binding.pry
     if @observation.save
       # flash[:message] = "Observation created!"
       redirect_to observations_path

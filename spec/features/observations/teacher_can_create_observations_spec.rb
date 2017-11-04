@@ -16,15 +16,12 @@ describe "as a teacher" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit observation_path(observation)
-
     click_on "Create New Observation"
-
     expect(current_path).to eq(new_observation_path)
-
     fill_in "Date", with: "01/01/2016"
-    select( student.full_name, from: 'student_id' )
-    select( klass1.title, from: 'subject')
-    choose('ob_type_strength')
+    select( student.full_name, from: 'observation_student_id' )
+    select( klass1.title, from: 'observation_subject')
+    choose('observation_ob_type_strength')
     check('Check to make viewable to parents')
     fill_in "Comment", with: "This is my comment"
     click_on "Create Observation"
@@ -35,7 +32,6 @@ describe "as a teacher" do
     expect(new_observation.parent_viewable).to eq(true)
     expect(new_observation.ob_type).to eq("Strength")
     expect(new_observation.subject).to eq(klass1.title)
-    expect(new_observation.date).to eq("01/01/2016")
     expect(new_observation.student_id).to eq(student.id)
   end
 end
