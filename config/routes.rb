@@ -7,6 +7,7 @@ Rails.application.routes.draw do
    get '/logout', to: "sessions#destroy"
 
    get '/dashboard', to: "dashboard#index"
+   get '/auth/:provider/callback', to: 'sessions#create'
 
 
    resources :klasses do

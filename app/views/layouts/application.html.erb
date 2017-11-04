@@ -19,6 +19,7 @@
             <span class="navbar-text">Welcome <%= current_user.first_name %></span>
         <% else %>
             <%= link_to "Login", login_path, class: "btn btn-link" %>
+            <%= link_to "Sign in with Google", "/auth/google", class: "btn btn-link" %>
         <% end %>
       </div>
     </nav>
