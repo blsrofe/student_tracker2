@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :observations
-  resources :users, only: [:edit, :update, :new, :create]
+  resources :users, only: [:edit, :update]
 
   resources :klasses do
     resources :students, only: [:index]
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
+    resources :users, only: [:create, :new]
   end
-
-
 end
