@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     current_user.id == observation.user.id
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
 end
