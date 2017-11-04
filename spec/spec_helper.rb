@@ -97,3 +97,21 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
+    provider: "google",
+    uid: "12345678910",
+    info: {
+           email: "jim@gmail.com",
+           first_name: "Jim",
+           last_name: "Scott"
+         },
+    credentials: {
+                  token: "abcede439439",
+                  refresh_token: "123434fkdjfdkj",
+                  expires_at: DateTime.now
+                  }
+    })
+end

@@ -13,19 +13,35 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  # def students
-  #   klasses.first.students.map do |student|
-  #     student.full_name
-  #   end
-  # end
-
   def students
-    klasses.first.students
+    student_collections = klasses.map do |klass|
+      klass.students
+    end
+    student_collections.flatten.uniq
   end
 
   def klass_names
     klasses.map do |klass|
       klass.title
+    end
+  end
+
+  def self.from_oauth(auth)
+    user = User.find_by(email: auth[:info][:email])
+    if user
+      attributes = {
+        provider: auth[:provider],
+        uid: auth[:uid],
+        email: auth[:info][:email],
+        first_name: auth[:info][:first_name],
+        last_name: auth[:info][:last_name],
+        token: auth[:credentials][:token],
+        refresh_token: auth[:credentials][:refresh_token]
+      }
+      user.update(attributes)
+      user
+    else
+      return false
     end
   end
 end
