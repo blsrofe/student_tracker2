@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
   def observation_owner?(observation)
     current_user.id == observation.user.id
   end
+
 end

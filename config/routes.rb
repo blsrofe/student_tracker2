@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
 
-   root "welcome#index"
+  root "welcome#index"
 
-   get '/login', to: "sessions#new"
-   post '/login', to: "sessions#create"
-   get '/logout', to: "sessions#destroy"
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
 
-   get '/dashboard', to: "dashboard#index"
-   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/dashboard', to: "dashboard#index"
+  get '/auth/:provider/callback', to: 'sessions#create'
 
+  resources :observations
+  resources :users, only: [:edit, :update, :new, :create]
 
-   resources :klasses do
-     resources :students, only: [:index]
-   end
+  resources :klasses do
+    resources :students, only: [:index]
+  end
 
   namespace :students do
     scope "/:id/" do
@@ -20,8 +22,9 @@ Rails.application.routes.draw do
     end
   end
 
-   resources :observations
+  namespace :admin do
+    get '/dashboard', to: "dashboard#index"
+  end
 
-   resources :users, only: [:edit, :update]
 
 end
