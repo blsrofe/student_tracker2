@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :students do
     scope "/:id/" do
-      resources :observations
+      resources :observations, only: [:index]
     end
   end
 

@@ -15,15 +15,13 @@ describe "teacher can view all observations" do
     student.observations << observations2
     observations = create_list(:observation, 5, user: user1)
     student.observations << observations
-    observation = Observation.first
+    observation = Observation.find(6)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
     visit dashboard_path
 
     click_on "View Observations"
-
     expect(current_path).to eq(observations_path)
-
     expect(page).to have_css(".observation", count: 5)
     within(first(".observation")) do
       expect(page).to have_content(observation.date)
