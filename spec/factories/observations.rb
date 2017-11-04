@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :observation do
     subject "Math"
     ob_type "Improvement"
-    comment "MyText"
+    sequence(:comment) {|n| "#{n} My comment here"}
     date "2017-11-01"
     parent_viewable false
     student

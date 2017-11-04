@@ -45,7 +45,7 @@ class ObservationsController < ApplicationController
   def destroy
     @observation = Observation.find(params[:id])
     @observation.destroy
-    # flash[:message] = "Observation for has been deleted!"
+    flash[:message] = "Observation for has been deleted!"
     redirect_to observations_path
   end
 
