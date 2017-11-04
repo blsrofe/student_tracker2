@@ -42,11 +42,10 @@ describe "as a teacher" do
     student.observations << observations2
     observation = Observation.last
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+    
     visit observation_path(observation)
 
-    click_on "Update Observation"
+    expect(page).to have_no_content("Update Observation")
 
-    expect(page).to have_content("You may not update an observation that you did not write.")
-    expect(current_path).to eq(observation_path(observation))
   end
 end
