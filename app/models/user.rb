@@ -27,17 +27,21 @@ class User < ApplicationRecord
   end
 
   def self.from_oauth(auth)
-    user = User.find_by(uid: auth[:uid]) || User.new
-    user.attributes = {
-      provider: auth[:provider],
-      uid: auth[:uid],
-      email: auth[:info][:email],
-      first_name: auth[:info][:first_name],
-      last_name: auth[:info][:last_name],
-      token: auth[:credentials][:token],
-      refresh_token: auth[:credentials][:refresh_token]
-    }
-    user.save
-    user
+    user = User.find_by(email: auth[:info][:email])
+    if user
+      attributes = {
+        provider: auth[:provider],
+        uid: auth[:uid],
+        email: auth[:info][:email],
+        first_name: auth[:info][:first_name],
+        last_name: auth[:info][:last_name],
+        token: auth[:credentials][:token],
+        refresh_token: auth[:credentials][:refresh_token]
+      }
+      user.update(attributes)
+      user
+    else
+      return false
+    end
   end
 end

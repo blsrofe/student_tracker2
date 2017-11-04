@@ -51,7 +51,9 @@ describe User do
   end
 
   describe "user signs in with oauth" do
-    it "creates or updates itself from an oauth hash" do
+    it "updates itself from an oauth hash" do
+      user = User.create!(first_name: "Jim", last_name: "Scott", email: "jim@gmail.com", password: "password")
+
       auth = {
               provider: "google",
               uid: "12345678910",

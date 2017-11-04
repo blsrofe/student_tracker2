@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:message] = "Login Unsuccessful"
+      flash[:message] = "Login Unsuccessful. Check with your administrator if you have not been provided with an account."
       redirect_to root_path
     end
   end
