@@ -24,16 +24,20 @@ class ObservationsController < ApplicationController
 
   def edit
     @observation = Observation.find(params[:id])
+    if @observation.user_id != current_user.id
+      flash[:message] = "You may not update an observation that you did not write."
+      redirect_to observation_path(@observation)
+    end
   end
 
   def update
     @observation = Observation.find(params[:id])
     @observation.update(observation_params)
     if @observation.save
-    #  flash[:message] = "You updated your observation!"
-     redirect_to observation_path(@observation)
+      flash[:message] = "You updated your observation!"
+      redirect_to observation_path(@observation)
     else
-    #  flash[:message] = "Profile was not updated. Make sure to fill in all fields."
+      flash[:message] = "Profile was not updated. Make sure to fill in all fields."
       render :edit
     end
   end

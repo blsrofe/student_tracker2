@@ -12,12 +12,21 @@ Student.destroy_all
 Observation.destroy_all
 
 user = User.create(first_name: "Becki", last_name: 'Srofe', email: "bsrofe23@gmail.com", password: "password")
+user2 = User.create(first_name: "Joe", last_name: 'Smith', email: "joe@gmail.com", password: "password")
 
 2.times do |klasses|
   title = Faker::Job.unique.field
   school_year = "2017-2018"
   description = Faker::Hipster.sentence(3)
   Klass.create(title: title, school_year: school_year, description: description, user: user)
+  puts "Created #{title}"
+end
+
+2.times do |klasses|
+  title = Faker::Job.unique.field
+  school_year = "2017-2018"
+  description = Faker::Hipster.sentence(3)
+  Klass.create(title: title, school_year: school_year, description: description, user: user2)
   puts "Created #{title}"
 end
 
@@ -34,15 +43,27 @@ end
 students = Student.all
 
 students.each do |student|
-  class_1 = Klass.first
+  id = Klass.first.id
+  class_1 = Klass.find(id)
   KlassStudent.create(student: student, klass: class_1)
-  class_3 = Klass.last
+  class_2 = Klass.find(id + 1)
+  KlassStudent.create(student: student, klass: class_2)
+  class_3 = Klass.find(id + 2)
   KlassStudent.create(student: student, klass: class_3)
+  class_4 = Klass.find(id + 3)
+  KlassStudent.create(student: student, klass: class_4)
   5.times do |observation|
     comment = Faker::ChuckNorris.fact
     date = Faker::Date.between(60.days.ago, Date.today)
     subject = Faker::Job.field
-    observation = Observation.create!(comment: comment, date: date, subject: subject, ob_type: "improvement_needed", user: user, student: student)
+    observation = Observation.create!(comment: comment, date: date, subject: subject, ob_type: "Strength", user: user, student: student)
+    puts "Create observation for #{student.first_name}"
+  end
+  5.times do |observation|
+    comment = Faker::ChuckNorris.fact
+    date = Faker::Date.between(60.days.ago, Date.today)
+    subject = Faker::Job.field
+    observation = Observation.create!(comment: comment, date: date, subject: subject, ob_type: "Strength", user: user2, student: student)
     puts "Create observation for #{student.first_name}"
   end
 end
