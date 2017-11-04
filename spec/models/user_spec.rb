@@ -49,4 +49,32 @@ describe User do
       expect(user).to respond_to(:observations)
     end
   end
+
+  describe "user signs in with oauth" do
+    it "creates or updates itself from an oauth hash" do
+      auth = {
+              provider: "google",
+              uid: "12345678910",
+              info: {
+                    email: "jim@gmail.com",
+                    first_name: "Jim",
+                    last_name: "Scott"
+                    },
+              credentials: {
+                            token: "abcede439439",
+                            refresh_token: "123434fkdjfdkj",
+                            expires_at: DateTime.now
+                            }
+              }
+      user = User.from_oauth(auth)
+
+      expect(user.provider).to eq("google")
+      expect(user.uid).to eq("12345678910")
+      expect(user.email).to eq("jim@gmail.com")
+      expect(user.first_name).to eq("Jim")
+      expect(user.last_name).to eq("Scott")
+      expect(user.token).to eq("abcede439439")
+      expect(user.refresh_token).to eq("123434fkdjfdkj")
+    end
+  end
 end

@@ -104,9 +104,9 @@ def stub_omniauth
     provider: "google",
     uid: "12345678910",
     info: {
-           email: "bsrofe23@gmail.com",
-           first_name: "Becki",
-           last_name: "Srofe"
+           email: "jim@gmail.com",
+           first_name: "Jim",
+           last_name: "Scott"
          },
     credentials: {
                   token: "abcede439439",
