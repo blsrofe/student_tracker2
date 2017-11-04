@@ -14,13 +14,14 @@ class User < ApplicationRecord
   end
 
   # def students
-  #   klasses.first.students.map do |student|
-  #     student.full_name
-  #   end
+  #   klasses.first.students
   # end
 
   def students
-    klasses.first.students
+    student_collections = klasses.map do |klass|
+      klass.students
+    end
+    student_collections.flatten.uniq
   end
 
   def klass_names
