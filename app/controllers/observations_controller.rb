@@ -31,7 +31,7 @@ class ObservationsController < ApplicationController
     @observation.update(observation_params)
     if @observation.save
     #  flash[:message] = "You updated your observation!"
-     redirect_to observations_path(observation)
+     redirect_to observation_path(@observation)
     else
     #  flash[:message] = "Profile was not updated. Make sure to fill in all fields."
       render :edit

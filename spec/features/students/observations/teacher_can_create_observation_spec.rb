@@ -1,11 +1,3 @@
-# As a teacher
-# When I visit klass/:id/students
-# And I click on "New Observation"
-# My path should be new_observation_path
-# And when I fill in data
-# And click "Create Observation"
-# My path should be /observations
-# And I should see my new observation at the end of the list
 require 'rails_helper'
 
 describe "as a teacher" do

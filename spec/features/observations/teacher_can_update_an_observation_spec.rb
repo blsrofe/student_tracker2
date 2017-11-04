@@ -19,13 +19,12 @@ describe "as a teacher" do
 
     click_on "Update Observation"
 
-    expect(current_path).to eq(edit_observation_path)
+    expect(current_path).to eq(edit_observation_path(observation))
 
     fill_in "Comment", with: "This is my new comment"
     click_on "Update Observation"
 
-    expect(current_path).to eq(observations_path)
-    new_observation = Observation.last
-    expect(new_observation.comment).to eq("This is my new comment")
+    expect(current_path).to eq(observation_path(observation))
+    expect(page).to have_content("This is my new comment")
   end
 end
