@@ -1,6 +1,6 @@
 <%= form_for [@observation] do |f| %>
   <%= f.label :student_id %>
-  <%= f.select :student_id, current_user.students.collect { |student| [ student.full_name, student.id] } %>
+  <%= f.select :student_id, current_user.students.collect { |student| [ student.full_name, student.id] } %></br>
   <%= f.label :date %>
   <%= f.date_field :date %></br>
   <%= f.label :subject %>
