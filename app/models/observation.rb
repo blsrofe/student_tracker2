@@ -5,7 +5,6 @@ class Observation < ApplicationRecord
   belongs_to :user
 
   def add_tone(raw_tone_data)
-    # tone_collection = raw_tone_data[:document_tone][:tones].first
     tone_collection = raw_tone_data[:document_tone][:tones].map do |tone_group|
       tone_group[:tone_name]
     end
