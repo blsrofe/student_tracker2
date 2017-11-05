@@ -7,6 +7,8 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
     if @user.save
       flash[:message] = "Account created for #{@user.full_name}"
+
+      AccountNotifierMailer.inform(@user).deliver_now
       redirect_to admin_dashboard_path
     else
       flash[:message] = "Account was not created. Try again!"
