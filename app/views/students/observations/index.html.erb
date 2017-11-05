@@ -27,6 +27,7 @@
       <td> <%= observation.comment %></td>
       <td> <%= observation.parent_viewable %></td>
       <td> <%= observation.user.full_name %></td>
+      <td> <%= observation.tone %> </td>
       <td><%= link_to "View", observation_path(observation), class: "btn btn-primary" %></td>
       <% if observation_owner?(observation) %>
         <td><%= link_to "Update", edit_observation_path(observation), class: "btn btn-primary" %></td>

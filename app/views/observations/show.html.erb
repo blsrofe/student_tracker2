@@ -8,6 +8,7 @@
       <h6 class="card-subtitle mb-2 text-muted"> Subject: <%= @observation.subject%> </h6>
       <h6 class="card-subtitle mb-2 text-muted"> Type: <%= @observation.ob_type %> </h6>
       <h6 class="card-subtitle mb-2 text-muted"> Viewable by Parents? <%= @observation.parent_viewable %> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Tone <%= @observation.tone %> </h6>
       <p class="card-text"> <%= @observation.comment %> </p>
       <%= link_to "Create New Observation", new_observation_path, class: "btn btn-link" %>
       <% if observation_owner?(@observation) %>

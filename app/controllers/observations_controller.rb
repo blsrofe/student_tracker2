@@ -14,6 +14,7 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
     if @observation.save
+      ToneAnalyzer.find_tone(@observation.id, @observation.comment)
       flash[:message] = "Observation created!"
       redirect_to observations_path
     else
