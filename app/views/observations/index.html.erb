@@ -1,5 +1,8 @@
 <h1>All Observations by <%= current_user.full_name %> </h1>
 
+<%= link_to "Create New Observation", new_observation_path, class: "btn btn-link" %>
+
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -11,6 +14,8 @@
       <th>Parent Viewable</th>
       <th>Student</th>
       <th>Full View</th>
+      <th>Update</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
