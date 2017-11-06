@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
 
   def create
     default_login? ? user = default_login_info : user = oauth_login_info
-    if user
+    if user && user.admin?
+      flash[:message] =  "Login Successful"
+      session[:user_id] = user.id
+      redirect_to admin_dashboard_path
+    elsif user
       flash[:message] =  "Login Successful"
       session[:user_id] = user.id
       redirect_to dashboard_path

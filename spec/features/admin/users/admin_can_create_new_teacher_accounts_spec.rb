@@ -8,7 +8,7 @@ describe "User can visit their dashboard" do
 
       visit admin_dashboard_path
 
-      click_on "Add Account"
+      click_on "Create New User"
       fill_in "First name", with: "John"
       fill_in "Last name", with: "Smith"
       fill_in "Email", with: "new@gmail.com"
