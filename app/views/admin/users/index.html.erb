@@ -11,6 +11,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Change Role </th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -22,6 +23,13 @@
         <td> <%= user.last_name %></td>
         <td> <%= user.email %></td>
         <td> <%= user.role %></td>
+        <td>
+          <% if user.teacher? %>
+              <%= button_to "Make Admin", admin_make_admin_path(user), class: "btn btn-primary" %>
+          <% else %>
+              <%= button_to "Revmove Admin Status", admin_make_teacher_path(user), class: "btn btn-primary" %>
+          <% end %>
+        </td>
         <td><%= link_to "Delete", admin_user_path(user), class: "btn btn-primary", method: :delete %></td>
       </tr>
       <% end %>

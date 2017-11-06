@@ -26,8 +26,29 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path
   end
 
+  def make_admin
+    @user = User.find(params[:format])
+    @user.admin!
+    redirect_to admin_users_path
+  end
+
+  def make_teacher
+    @user = User.find(params[:format])
+    @user.teacher!
+    redirect_to admin_users_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
     end
+
+    def toggle_user(user)
+      if user.admin?
+        user.teacher!
+      elsif user.teacher?
+        user.admin!
+      end
+    end
+
 end
