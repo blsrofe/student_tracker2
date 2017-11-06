@@ -1,7 +1,11 @@
 class KlassesController < ApplicationController
 
   def index
-    @klasses = current_user.klasses
+    if current_user.admin?
+      @klasses = Klass.all
+    else
+      @klasses = current_user.klasses
+    end
   end
 
   def show

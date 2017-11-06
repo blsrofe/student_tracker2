@@ -6,6 +6,7 @@
     <div class="card-block">
       <h3 class="card-title"> <%= klass.title %></h3>
       <h5 class="card-title"><%= klass.school_year %></h5>
+      <h5 class="card-title"><%= klass.user.full_name %></h5>
       <p class="card-text"><%= klass.description %></p>
       <%= link_to "Students", klass_students_path(klass), class: "btn btn-primary" %>
     </div>
