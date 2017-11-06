@@ -19,13 +19,6 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  def edit
-  end
-
-  def update
-
-  end
-
   def destroy
     @user = User.find(params[:id])
     @user.destroy
