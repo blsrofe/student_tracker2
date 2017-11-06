@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :observations
   resources :users, only: [:edit, :update]
+  resources :students, only: [:show]
 
   resources :klasses do
     resources :students, only: [:index]
@@ -26,6 +27,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: "dashboard#index"
     resources :users, except: [:show, :edit, :update]
     resources :klasses, except: [:show, :index]
-    resources :students, only: [:new, :create, :update, :edit, :index]
+    resources :students, except: [:show]
   end
 end
