@@ -15,9 +15,19 @@ class Admin::KlassesController < Admin::BaseController
   end
 
   def edit
+    @klass = Klass.find(params[:id])
   end
 
   def update
+    @klass = Klass.find(params[:id])
+    @klass.update(klass_params)
+    if @klass.save
+      flash[:message] = "You updated #{@klass.title}!"
+      redirect_to klass_path(@klass)
+    else
+      flash[:message] = "Klass was not updated. Please try again!"
+      render :edit
+    end
   end
 
   def destroy

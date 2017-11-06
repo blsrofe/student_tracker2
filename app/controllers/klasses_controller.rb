@@ -9,6 +9,10 @@ class KlassesController < ApplicationController
   end
 
   def show
-    @klass = Klass.find(params[:id])
+    if current_user.admin?
+      @klass = Klass.find(params[:id])
+    else
+      @klass = current_user.classes.find(params[:id])
+    end
   end
 end

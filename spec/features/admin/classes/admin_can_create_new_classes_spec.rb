@@ -11,12 +11,11 @@ describe "As an admin" do
 
     click_on "Create A Class"
     expect(current_path).to eq(new_admin_klass_path)
-save_and_open_page
     fill_in "Title", with: "Math 1"
     select("2017-2018", from: "klass_school_year")
     fill_in "Description", with: "1st grade math"
     select(teacher, from: 'klass_user_id')
-    click_on "Create Class"
+    click_on "Create or Update Class"
 
     expect(current_path).to eq(klasses_path)
     expect(page).to have_content("Math 1")
