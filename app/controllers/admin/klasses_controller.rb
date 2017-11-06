@@ -31,6 +31,10 @@ class Admin::KlassesController < Admin::BaseController
   end
 
   def destroy
+    @klass = Klass.find(params[:id])
+    @klass.destroy
+    flash[:message] = "Class has been deleted!"
+    redirect_to klasses_path
   end
 
   private
