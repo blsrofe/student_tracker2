@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :klass_student do
-    student 
+  factory :enrollment do
+    student
     klass
   end
 end

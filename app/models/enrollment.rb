@@ -1,4 +1,4 @@
-class KlassStudent < ApplicationRecord
+class Enrollment < ApplicationRecord
   belongs_to :student
   belongs_to :klass
 end

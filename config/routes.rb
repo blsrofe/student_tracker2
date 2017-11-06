@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :users, except: [:show, :edit, :update]
     resources :klasses, except: [:show, :index]
     resources :students, except: [:show]
+    resources :enrollments, except: [:show, :index]
     post '/make_admin', to: "users#make_admin"
     post '/make_teacher', to: "users#make_teacher"
   end
