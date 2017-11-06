@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
     resources :users, except: [:show, :edit, :update]
-    resources :klasses, only: [:new, :create, :update, :edit]
+    resources :klasses, except: [:show, :index]
     resources :students, only: [:new, :create, :update, :edit, :index]
   end
 end
