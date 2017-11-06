@@ -19,9 +19,19 @@ class Admin::StudentsController < Admin::BaseController
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+    if @student.save
+      flash[:message] = "You updated #{@student.full_name}!"
+      redirect_to student_path(@student)
+    else
+      flash[:message] = "Student was not updated. Please try again!"
+      render :edit
+    end
   end
 
   def destroy

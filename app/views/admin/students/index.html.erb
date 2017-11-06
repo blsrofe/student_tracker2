@@ -7,9 +7,11 @@
         <th></th>
         <th>Name</th>
         <th>Grade</th>
-        <th>Student Details<th>
+        <th>Student Details</th>
         <th>Current Observations</th>
         <th>New Observation</th>
+        <th>Update Student Information</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +23,8 @@
         <td><%= link_to "Student Details", student_path(student), class: "btn btn-primary" %></td>
         <td><%= link_to "View Observations", students_observations_path(student), class: "btn btn-primary" %></td>
         <td><%= link_to "New Observation", new_observation_path, class: "btn btn-primary" %></td>
+        <td><%= link_to "Update", edit_admin_student_path(student), class: "btn btn-primary" %></td>
+        <td><%= link_to "Delete", admin_student_path(student), class: "btn btn-primary", method: :delete %></td>
       </tr>
       <% end %>
     </tbody>
