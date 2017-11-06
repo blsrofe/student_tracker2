@@ -30,11 +30,15 @@ class Admin::StudentsController < Admin::BaseController
       redirect_to student_path(@student)
     else
       flash[:message] = "Student was not updated. Please try again!"
-      render :edit
+      redirect_to edit_admin_student_path(@student)
     end
   end
 
   def destroy
+    @student = Student.find(params[:id])
+    @student.destroy
+    flash[:message] = "Student has been deleted!"
+    redirect_to admin_students_path
   end
 
   private
