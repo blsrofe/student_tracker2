@@ -11,6 +11,9 @@
       <th>Student Details</th>
       <th>Current Observations</th>
       <th>New Observations</th>
+      <% if current_user.admin? %>
+        <th>Drop From Class</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +25,9 @@
       <td><%= link_to "Student Details", student_path(student), class: "btn btn-primary" %></td>
       <td><%= link_to "View Observations", students_observations_path(student), class: "btn btn-primary" %></td>
       <td><%= link_to "New Observation", new_observation_path, class: "btn btn-primary" %></td>
+      <% if current_user.admin? %>
+        <td><%= link_to "Drop", admin_enrollment_path(student), class: "btn btn-primary", method: :delete %><td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
