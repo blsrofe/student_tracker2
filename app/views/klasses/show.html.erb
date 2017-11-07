@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card w-50">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title"> <%= @klass.title %> </h4>
+        <h6 class="card-subtitle mb-2 text-muted"> Teacher: <%= @klass.user.full_name %> </h6>
+        <h6 class="card-subtitle mb-2 text-muted"> School Year: <%= @klass.school_year%> </h6>
+        <p class="card-text"> <%= @klass.description %> </p>
+        <%= link_to "Students", klass_students_path(@klass), class: "btn btn-link" %>
+      </div>
+    </div>
+  </div>
+</div>

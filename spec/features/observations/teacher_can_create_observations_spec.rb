@@ -23,15 +23,16 @@ describe "as a teacher" do
     select( klass1.title, from: 'observation_subject')
     choose('observation_ob_type_strength')
     check('Check to make viewable to parents')
-    fill_in "Comment", with: "This is my comment"
+    fill_in "Comment", with: "Great effort shown on math test today"
     click_on "Create Observation"
 
     expect(current_path).to eq(observations_path)
     new_observation = Observation.last
-    expect(new_observation.comment).to eq("This is my comment")
+    expect(new_observation.comment).to eq("Great effort shown on math test today")
     expect(new_observation.parent_viewable).to eq(true)
     expect(new_observation.ob_type).to eq("Strength")
     expect(new_observation.subject).to eq(klass1.title)
     expect(new_observation.student_id).to eq(student.id)
+    expect(new_observation.tone).to eq("Joy")
   end
 end

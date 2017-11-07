@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>All Users</h1>
+
+  <%= link_to "Create New User", new_admin_user_path, class: "btn btn-link" %>
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Change Role </th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr class="user">
+        <th scope="row"></th>
+        <td> <%= user.first_name %></td>
+        <td> <%= user.last_name %></td>
+        <td> <%= user.email %></td>
+        <td> <%= user.role %></td>
+        <td>
+          <% if user.teacher? %>
+              <%= link_to "Make Admin", admin_make_admin_path(user), class: "btn btn-primary", method: :put %>
+          <% else %>
+              <%= link_to "Remove Admin Status", admin_make_teacher_path(user), class: "btn btn-primary", method: :put %>
+          <% end %>
+        </td>
+        <td><%= link_to "Delete", admin_user_path(user), class: "btn btn-primary", method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

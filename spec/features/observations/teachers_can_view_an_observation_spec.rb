@@ -28,7 +28,7 @@ describe "teacher can view an observation" do
     expect(page).to have_content(observation.student.full_name)
     expect(page).to have_content(observation.parent_viewable)
     expect(page).to have_content("Create New Observation")
-    # expect(page).to have_content(observation.tone)
+    expect(page).to have_content(observation.tone)
   end
 
   it "from the students_observations_path" do
@@ -57,6 +57,6 @@ describe "teacher can view an observation" do
     expect(page).to have_content(observation.student.full_name)
     expect(page).to have_content(observation.parent_viewable)
     expect(page).to have_content("Create New Observation")
-    # expect(page).to have_content(observation.tone)
+    expect(page).to have_content(observation.tone)
   end
 end

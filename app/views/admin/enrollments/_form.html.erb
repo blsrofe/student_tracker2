@@ -1,0 +1,5 @@
+<%= form_for([:admin, @enrollment]) do |f| %>
+  <%= f.select :klass_id, Klass.all.collect { |klass| [ klass.title, klass.id] }, {prompt: "Please select a class:"} %></br>
+  <%= f.select :student_id, Student.all.collect { |student| [ student.full_name, student.id] }, {prompt: "Please select a student"} %></br>
+  <%= f.submit %>
+<% end %>

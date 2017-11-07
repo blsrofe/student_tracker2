@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :observations
   resources :users, only: [:edit, :update]
+  resources :students, only: [:show]
 
   resources :klasses do
     resources :students, only: [:index]
@@ -24,6 +25,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
-    resources :users, only: [:create, :new]
+    resources :users, except: [:show, :edit, :update]
+    resources :klasses, except: [:show, :index]
+    resources :students, except: [:show]
+    resources :enrollments, except: [:show, :index]
+    put '/make_admin', to: "users#make_admin"
+    put '/make_teacher', to: "users#make_teacher"
   end
 end

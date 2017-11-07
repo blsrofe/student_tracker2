@@ -1,10 +1,18 @@
 class KlassesController < ApplicationController
 
   def index
-    @klasses = current_user.klasses
+    if current_user.admin?
+      @klasses = Klass.all
+    else
+      @klasses = current_user.klasses
+    end
   end
 
   def show
-    @klass = Klass.find(params[:id])
+    if current_user.admin?
+      @klass = Klass.find(params[:id])
+    else
+      @klass = current_user.classes.find(params[:id])
+    end
   end
 end

@@ -1,0 +1,12 @@
+<%= form_for([:admin, @student]) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %></br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %></br>
+  <%= f.select :grade_level, options_for_select(["K", "1", "2", "3", "4", "5"]) %></br>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %></br>
+  <%= f.label :email %>
+  <%= f.text_field :email %></br>
+  <%= f.submit %>
+<% end %>
