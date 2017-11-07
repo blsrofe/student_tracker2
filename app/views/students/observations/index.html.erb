@@ -1,38 +1,41 @@
-<h1>Observations for <%= @student.full_name %> </h1>
+<div class="container">
+  <h1 class="header-font page-heading">Observations for <%= @student.full_name %> </h1>
 
-<%= link_to "Create New Observation for #{@student.full_name}", new_observation_path, class: "btn btn-link" %>
-
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Date</th>
-      <th>Subject</th>
-      <th>Type</th>
-      <th>Content</th>
-      <th>Parent Viewable</th>
-      <th>Author</th>
-      <th>Full View</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @observations.each do |observation| %>
-    <tr class="observation">
-      <th scope="row"></th>
-      <td> <%= observation.date %></td>
-      <td> <%= observation.subject %></td>
-      <td> <%= observation.ob_type %></td>
-      <td> <%= observation.comment %></td>
-      <td> <%= observation.parent_viewable %></td>
-      <td> <%= observation.user.full_name %></td>
-      <td><%= link_to "View", observation_path(observation), class: "btn btn-primary" %></td>
-      <% if observation_owner?(observation) %>
-        <td><%= link_to "Update", edit_observation_path(observation), class: "btn btn-primary" %></td>
-        <td><%= link_to "Delete", observation_path(observation), class: "btn btn-primary", method: :delete %></td>
+  <%= link_to "Create New Observation for #{@student.full_name}", new_observation_path, class: "btn btn-link link-font" %>
+  <table class="table table-bordered table-hover table-color">
+    <thead>
+      <tr class="table-head-style">
+        <th></th>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>Type</th>
+        <th>Content</th>
+        <th>Parent Viewable</th>
+        <th>Author</th>
+        <th>Full View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @observations.each do |observation| %>
+      <tr class="observation">
+        <th scope="row"></th>
+        <td> <%= observation.date %></td>
+        <td> <%= observation.subject %></td>
+        <td> <%= observation.ob_type %></td>
+        <td> <%= observation.comment %></td>
+        <td> <%= observation.parent_viewable %></td>
+        <td> <%= observation.user.full_name %></td>
+        <td><%= link_to "View", observation_path(observation), class: "btn btn-primary" %></td>
+        <% if observation_owner?(observation) %>
+          <td><%= link_to "Update", edit_observation_path(observation), class: "btn btn-primary" %></td>
+          <td><%= link_to "Delete", observation_path(observation), class: "btn btn-primary", method: :delete %></td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+
+</div>

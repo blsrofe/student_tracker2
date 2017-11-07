@@ -46,6 +46,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'bullet'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development do

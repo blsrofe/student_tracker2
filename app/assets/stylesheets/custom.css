@@ -44,3 +44,22 @@ body {
     margin-top: 50px;
     border-radius: 25px;
 }
+
+.table-color {
+  background-color: white;
+}
+
+.link-font {
+  font-family: cursive;
+  font-weight: bolder;
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.table-head-style {
+  font-family: cursive;
+  font-weight: bolder;
+  padding-top: 10px;
+  font-size: 24px;
+  text-align: center;
+}
