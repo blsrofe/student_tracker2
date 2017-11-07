@@ -1,9 +1,16 @@
-<%= form_for([:admin, @klass]) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %></br>
-  <%= f.select :school_year, options_for_select(["2017-2018", "2018-2019"]) %></br>
-  <%= f.label :description %>
-  <%= f.text_field :description %></br>
-  <%= f.select :user_id, User.all.collect { |user| [ user.full_name, user.id] } %></br>
-  <%= f.submit "Create or Update Class"%>
-<% end %>
+<div class="container">
+  <div class="card form-styles" style="width: 20rem;">
+    <div class="card-block">
+      <h2 class="header-font text-center card-title">Create or Update A Class</h2>
+      <%= form_for([:admin, @klass]) do |f| %>
+        <%= f.select :school_year, options_for_select(["2017-2018", "2018-2019"]) %>
+        <%= f.select :user_id, User.all.collect { |user| [ user.full_name, user.id] } %></br>
+        <%= f.label :title %>
+        <%= f.text_field :title %></br>
+        <%= f.label :description %>
+        <%= f.text_field :description %></br>
+        <%= f.submit "Create or Update Class"%>
+      <% end %>
+    </div>
+  </div>
+</div>

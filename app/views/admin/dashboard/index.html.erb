@@ -1,38 +1,37 @@
 <div class="container">
-
-<h1>Dashboard for <%= current_user.full_name %> </h1>
-
-<%= link_to "Update Your Account", edit_user_path(current_user), class: "btn btn-primary" %>
-
-<div class="card-deck">
-  <div class="card">
+  <h1 class="page-heading header-font">Dashboard for <%= current_user.full_name %> </h1>
+  <div class="page-heading">
+  <%= link_to "Update Your Account", edit_user_path(current_user), class: "btn btn-primary " %>
+  </div>
+<div class="card-deck card-deck-margin">
+  <div class="card w-50 text-center card-border-styles">
     <div class="card-block">
-      <h4 class="card-title"> Users </h4>
+      <h2 class="card-title header-font"> Users </h2>
       <%= link_to "View All Users", admin_users_path, class: "btn btn-link" %>
       <%= link_to "Create New User", new_admin_user_path, class: "btn btn-link" %>
     </div>
   </div>
 
-  <div class="card w-50">
+  <div class="card w-50 text-center card-border-styles">
     <div class="card-block">
-      <h4 class="card-title"> Classes </h4>
+      <h2 class="card-title header-font"> Classes </h2>
       <%= link_to "View All Classes", klasses_path, class: "btn btn-link" %>
       <%= link_to "Create A Class", new_admin_klass_path, class: "btn btn-link" %>
     </div>
   </div>
 
-  <div class="card w-50">
+  <div class="card w-50 text-center card-border-styles">
     <div class="card-block">
-      <h4 class="card-title"> Students </h4>
+      <h2 class="card-title header-font"> Students </h2>
       <%= link_to "View All Students", admin_students_path, class: "btn btn-link" %>
       <%= link_to "Create A Student", new_admin_student_path, class: "btn btn-link" %>
-      <%= link_to "Enroll Students In A Class", new_admin_enrollment_path, class: "btn btn-primary" %>
+      <%= link_to "Enroll Students In A Class", new_admin_enrollment_path, class: "btn btn-link" %>
     </div>
   </div>
 
-  <div class="card w-50">
+  <div class="card w-50 text-center card-border-styles">
     <div class="card-block">
-      <h4 class="card-title"> Observations </h4>
+      <h2 class="card-title header-font"> Observations </h2>
       <%= link_to "View All Observations", observations_path, class: "btn btn-link" %>
       <%= link_to "Create An Observation", new_observation_path, class: "btn btn-link" %>
     </div>

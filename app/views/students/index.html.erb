@@ -1,34 +1,36 @@
-<h1> <%=@klass.title %> </h1>
-<h3> Teacher: <%= @klass.user.full_name %> </h3>
-<h3> Year: <%= @klass.school_year %> </h3>
+<div class="container">
+  <h1 class="header-font page-heading"> <%=@klass.title %> </h1>
+  <h3 class="header-font page-heading"> Teacher: <%= @klass.user.full_name %> </h3>
+  <h3 class="header-font page-heading"> Year: <%= @klass.school_year %> </h3>
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Grade</th>
-      <th>Student Details</th>
-      <th>Current Observations</th>
-      <th>New Observations</th>
-      <% if current_user.admin? %>
-        <th>Drop From Class</th>
+  <table class="table table-bordered table-hover table-color">
+    <thead>
+      <tr class="table-head-style">
+        <th></th>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Student Details</th>
+        <th>Current Observations</th>
+        <th>New Observations</th>
+        <% if current_user.admin? %>
+          <th>Drop From Class</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+      <tr class="student">
+        <th scope="row"></th>
+        <td> <%= student.full_name %></td>
+        <td> <%= student.grade_level %></td>
+        <td><%= link_to "Student Details", student_path(student), class: "btn btn-primary" %></td>
+        <td><%= link_to "View Observations", students_observations_path(student), class: "btn btn-primary" %></td>
+        <td><%= link_to "New Observation", new_observation_path, class: "btn btn-primary" %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to "Drop", admin_enrollment_path(student), class: "btn btn-primary", method: :delete %><td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
-    <tr class="student">
-      <th scope="row"></th>
-      <td> <%= student.full_name %></td>
-      <td> <%= student.grade_level %></td>
-      <td><%= link_to "Student Details", student_path(student), class: "btn btn-primary" %></td>
-      <td><%= link_to "View Observations", students_observations_path(student), class: "btn btn-primary" %></td>
-      <td><%= link_to "New Observation", new_observation_path, class: "btn btn-primary" %></td>
-      <% if current_user.admin? %>
-        <td><%= link_to "Drop", admin_enrollment_path(student), class: "btn btn-primary", method: :delete %><td>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

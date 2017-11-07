@@ -1,6 +1,6 @@
 class Students::ObservationsController < ApplicationController
   def index
-    @student = Student.find(params[:id])
+    @student = Student.includes(:observations).find(params[:id])
     @observations = @student.observations
   end
 end

@@ -32,6 +32,7 @@ gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'omniauth-google-oauth2'
+gem 'newrelic_rpm'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,6 +45,8 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'bullet'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development do

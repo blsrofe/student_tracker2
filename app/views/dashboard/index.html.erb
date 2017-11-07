@@ -1,5 +1,13 @@
-<h1>Dashboard for <%= current_user.full_name %> </h1>
-
-<%= link_to "Update Account", edit_user_path(current_user), class: "btn btn-primary" %>
-<%= link_to "View Classes", klasses_path, class: "btn btn-primary" %>
-<%= link_to "View Observations", observations_path, class: "btn btn-primary" %>
+<div class="container">
+  <div class="centered">
+    <div class="card w-75 text-center card-deck-margin show_styles card-border-styles">
+      <div class="card-block">
+        <h1 class="card-title show-title"> <%= current_user.full_name %>'s Dashboard </h1></br>
+        <%= link_to "Update Account", edit_user_path(current_user), class: "btn btn-primary" %>
+        <%= link_to "View Classes", klasses_path, class: "btn btn-primary" %>
+        <%= link_to "View Observations", observations_path, class: "btn btn-primary" %>
+        <%= link_to "Create New Observation", new_observation_path, class: "btn btn-primary show-top-margin" %>
+      </div>
+    </div>
+  </div>
+</div>
