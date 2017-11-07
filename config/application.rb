@@ -21,6 +21,22 @@ module StudentTracker2
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.sendgrid.net',
+      port:                 '587',
+      domain:               'example.com',
+      user_name:            ENV["SENDGRID_USERNAME"],
+      password:             ENV["SENDGRID_PASSWORD"],
+      authentication:       'plain',
+      enable_starttls_auto: true
+    }
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
+  end
+end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
