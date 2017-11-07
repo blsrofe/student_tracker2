@@ -33,7 +33,7 @@ module StudentTracker2
       enable_starttls_auto: true
     }
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
     config.generators.system_tests = nil
   end
 end

@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: student_tracker2_production
-  username: student_tracker2
-  password: <%= ENV['STUDENT_TRACKER2_DATABASE_PASSWORD'] %>
+  database: student_tracker2_development
