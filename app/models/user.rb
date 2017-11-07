@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
-  validates :first_name, :last_name, :password, presence: true
+  validates :first_name, :last_name, presence: true
+  validates :password, presence: true, if: :password
   validates :email, presence: true, uniqueness: true
 
-  enum role: ["teacher", "admin", "guardian"]
+  enum role: ["teacher", "admin"]
 
   has_many :klasses, dependent: :destroy
   has_many :observations, dependent: :destroy

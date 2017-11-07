@@ -46,7 +46,7 @@ describe Student do
 
     it "has many klass_students" do
       student = create(:student)
-      expect(student).to respond_to(:klass_students)
+      expect(student).to respond_to(:enrollments)
     end
 
     it "has many observations" do

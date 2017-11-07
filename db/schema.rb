@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105205041) do
+ActiveRecord::Schema.define(version: 20171106201032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "klass_students", force: :cascade do |t|
+  create_table "enrollments", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "klass_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["klass_id"], name: "index_klass_students_on_klass_id"
-    t.index ["student_id"], name: "index_klass_students_on_student_id"
+    t.index ["klass_id"], name: "index_enrollments_on_klass_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "klasses", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20171105205041) do
     t.string "refresh_token"
   end
 
-  add_foreign_key "klass_students", "klasses"
-  add_foreign_key "klass_students", "students"
+  add_foreign_key "enrollments", "klasses"
+  add_foreign_key "enrollments", "students"
   add_foreign_key "klasses", "students"
   add_foreign_key "klasses", "users"
   add_foreign_key "observations", "students"

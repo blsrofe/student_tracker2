@@ -1,0 +1,9 @@
+<%= form_for([:admin, @klass]) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %></br>
+  <%= f.select :school_year, options_for_select(["2017-2018", "2018-2019"]) %></br>
+  <%= f.label :description %>
+  <%= f.text_field :description %></br>
+  <%= f.select :user_id, User.all.collect { |user| [ user.full_name, user.id] } %></br>
+  <%= f.submit "Create or Update Class"%>
+<% end %>

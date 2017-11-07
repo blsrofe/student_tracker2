@@ -39,7 +39,7 @@ describe Klass do
 
     it "has many klass_students" do
       klass = create(:klass)
-      expect(klass).to respond_to(:klass_students)
+      expect(klass).to respond_to(:enrollments)
     end
 
     it "has many students" do

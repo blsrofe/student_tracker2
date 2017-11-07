@@ -1,14 +1,37 @@
+<div class="container">
 
+  <h1>All Classes</h1>
 
-<div class="card-deck">
-  <% @klasses.each do |klass| %>
-  <div class="card klass">
-    <div class="card-block">
-      <h3 class="card-title"> <%= klass.title %></h3>
-      <h5 class="card-title"><%= klass.school_year %></h5>
-      <p class="card-text"><%= klass.description %></p>
-      <%= link_to "Students", klass_students_path(klass), class: "btn btn-primary" %>
-    </div>
-  </div>
-  <% end %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>School Year</th>
+        <th>Teacher</th>
+        <th>Description</th>
+        <th>View</th>
+        <% if current_user.admin? %>
+          <th>Update</th>
+          <th>Delete</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @klasses.each do |klass| %>
+      <tr class="klass">
+        <th scope="row"></th>
+        <td> <%= klass.title %></td>
+        <td> <%= klass.school_year %></td>
+        <td> <%= klass.user.full_name %></td>
+        <td> <%= klass.description %></td>
+        <td><%= link_to "View", klass_path(klass), class: "btn btn-primary" %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to "Update", edit_admin_klass_path(klass), class: "btn btn-primary" %></td>
+          <td><%= link_to "Delete", admin_klass_path(klass), class: "btn btn-primary", method: :delete %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
