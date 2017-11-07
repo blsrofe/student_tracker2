@@ -9,22 +9,21 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <a class="nav-link" href="/">Student Tracker<span class="sr-only">(current)</span></a>
-
-        <% if logged_in? %>
-            <%= link_to "Logout", logout_path, class: "logout btn btn-link" %>
-            <% if current_user.admin? %>
-              <%= link_to "View Dashboard", admin_dashboard_path, class: "btn btn-link" %>
-            <% else %>
-              <%= link_to "View Dashboard", dashboard_path, class: "btn btn-link" %>
-            <% end %>
-            <span class="navbar-text">Welcome <%= current_user.first_name %></span>
-        <% else %>
-            <%= link_to "Login", login_path, class: "btn btn-link" %>
-            <%= link_to "Sign in with Google", "/auth/google", class: "btn btn-link" %>
-        <% end %>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="nav-link" href="/">Student Tracker<span class="sr-only">(current)</span></a>
+          <% if logged_in? %>
+              <%= link_to "Logout", logout_path, class: "logout btn btn-link" %>
+              <% if current_user.admin? %>
+                <%= link_to "View Dashboard", admin_dashboard_path, class: "btn btn-link" %>
+              <% else %>
+                <%= link_to "View Dashboard", dashboard_path, class: "btn btn-link" %>
+              <% end %>
+              <span class="navbar-text">Welcome <%= current_user.first_name %></span>
+          <% else %>
+              <%= link_to "Login", login_path, class: "btn btn-link" %>
+              <%= link_to "Sign in with Google", "/auth/google", class: "btn btn-link" %>
+          <% end %>
       </div>
     </nav>
     <% if flash[:message] %>

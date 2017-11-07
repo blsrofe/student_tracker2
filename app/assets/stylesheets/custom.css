@@ -3,3 +3,44 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.car-black {
+  color: black;
+}
+
+.page-heading {
+  margin: 20px;
+  text-align: center;
+}
+
+body {
+  background-color: #F0F8FF
+}
+
+.header-font {
+  font-family: cursive;
+  font-weight:bolder;
+  padding-top: 10px;
+}
+
+.card-deck-margin {
+  margin-top: 100px;
+}
+
+.center-button {
+  text-align: center;
+}
+
+.card-border-styles {
+  border: 3px solid #336666;
+  border-radius: 25px;
+}
+
+.form-styles {
+    margin: auto;
+    width: 50%;
+    border: 3px solid #336666;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 25px;
+}

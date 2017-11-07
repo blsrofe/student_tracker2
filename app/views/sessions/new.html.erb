@@ -1,11 +1,14 @@
-<h1>Login</h1>
-
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %></br>
-
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-
-  <%= f.submit "Login", class: 'login'  %>
-<% end %>
+<div class="container">
+  <div class="card form-styles" style="width: 20rem;">
+    <div class="card-block">
+      <h2 class="header-font card-title">Login</h2>
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field :email %></br>
+        <%= f.label :password %>
+        <%= f.text_field :password %>
+        <%= f.submit "Login", class: 'login'  %>
+      <% end %>
+    </div>
+  </div>
+</div>
