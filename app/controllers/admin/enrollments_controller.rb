@@ -1,19 +1,28 @@
 class Admin::EnrollmentsController < Admin::BaseController
   def new
-    @klass = Klass.find(params[:format])
     @enrollment = Enrollment.new
   end
 
+  # def create
+  #   @klass = Klass.find(params[:enrollment][:klass_id])
+  #   @enrollments = Enrollment.new(enrollment_params)
+  #   if @enrollment.save
+  #     params[:students].split(', ').each do |id|
+  #       @klass.students << Student.find(id)
+  #     end
+  #     redirect_to klass_path(@klass)
+  #   else
+  #     redirect_to admin_dashboard_path
+  #   end
+  # end
   def create
-    @klass = Klass.find(params[:enrollment][:klass_id])
-    @enrollments = Enrollment.new(enrollment_params)
+    @enrollment = Enrollment.new(enrollment_params)
     if @enrollment.save
-      params[:students].split(', ').each do |id|
-        @klass.students << Student.find(id)
-      end
-      redirect_to klass_path(@klass)
+      flash[:message] = "Enrollment successfully created!"
+      redirect_to klasses_path
     else
-      redirect_to admin_dashboard_path
+      flash[:message] = "Enrollment not saved. Make sure to fill in all fields"
+      redirect_to new_admin_enrollment_path
     end
   end
 

@@ -12,13 +12,13 @@ describe "As an admin" do
     within(first(".user")) do
       click_on "Make Admin"
     end
-    
-    expect(user.role).to eq("admin")
+
+    expect(page).to have_content("Remove Admin Status")
 
     within(first(".user")) do
       click_on "Remove Admin Status"
     end
 
-    expect(user.role).to eq("teacher")
+    expect(page).to have_content("Make Admin")
   end
 end

@@ -25,9 +25,9 @@
         <td> <%= user.role %></td>
         <td>
           <% if user.teacher? %>
-              <%= button_to "Make Admin", admin_make_admin_path(user), class: "btn btn-primary" %>
+              <%= link_to "Make Admin", admin_make_admin_path(user), class: "btn btn-primary", method: :put %>
           <% else %>
-              <%= button_to "Revmove Admin Status", admin_make_teacher_path(user), class: "btn btn-primary" %>
+              <%= link_to "Remove Admin Status", admin_make_teacher_path(user), class: "btn btn-primary", method: :put %>
           <% end %>
         </td>
         <td><%= link_to "Delete", admin_user_path(user), class: "btn btn-primary", method: :delete %></td>

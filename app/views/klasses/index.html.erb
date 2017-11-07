@@ -30,7 +30,7 @@
         <% if current_user.admin? %>
           <td><%= link_to "Update", edit_admin_klass_path(klass), class: "btn btn-primary" %></td>
           <td><%= link_to "Delete", admin_klass_path(klass), class: "btn btn-primary", method: :delete %></td>
-          <td><%= link_to "Enroll Students", new_admin_enrollment_path(klass), class: "btn btn-primary" %></td>
+          <td><%= link_to "Enroll Students", new_admin_enrollment_path, class: "btn btn-primary" %></td>
         <% end %>
       </tr>
       <% end %>

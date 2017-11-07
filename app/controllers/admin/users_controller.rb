@@ -26,15 +26,15 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path
   end
 
-  def make_admin
-    @user = User.find(params[:format])
-    @user.admin!
-    redirect_to admin_users_path
-  end
-
   def make_teacher
     @user = User.find(params[:format])
     @user.teacher!
+    redirect_to admin_users_path
+  end
+
+  def make_admin
+    @user = User.find(params[:format])
+    @user.admin!
     redirect_to admin_users_path
   end
 
