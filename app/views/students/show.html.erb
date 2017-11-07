@@ -1,21 +1,21 @@
 <div class="container">
-  <div class="card w-50">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title"> <%= @student.full_name %> </h4>
-        <h6 class="card-subtitle mb-2 text-muted"> Grade Level:  <%= @student.grade_level %> </h6>
-        <h6 class="card-subtitle mb-2 text-muted"> Email: <%= @student.email %> </h6>
-        <h6 class="card-subtitle mb-2 text-muted"> Notes: <%= @student.notes%> </h6>
-        <h6 class="card-subtitle mb-2 text-muted"> Classes:</h6>
-        <% @student.klasses.each do |klass| %>
-          <%= link_to klass.title, klass_path(klass)%></br>
-        <% end %>
-        <%= link_to "View Observations", students_observations_path(@student), class: "btn btn-primary" %>
-        <% if current_user.admin? %>
-          <td><%= link_to "Update", edit_admin_student_path(@student), class: "btn btn-primary" %></td>
-          <td><%= link_to "Delete", admin_student_path(@student), class: "btn btn-primary", method: :delete %></td>
-        <% end %>
-      </div>
+  <div class="centered">
+  <div class="card w-75 text-center card-deck-margin show_styles card-border-styles">
+    <div class="card-block">
+      <h4 class="card-title show-title"> <%= @student.full_name %> </h4>
+      <h6 class="card-subtitle mb-2"> Grade Level:  <%= @student.grade_level %> </h6></br>
+      <h6 class="card-subtitle mb-2"> Email: <%= @student.email %> </h6>
+      <h6 class="card-subtitle mb-2 text-muted"> Notes: <%= @student.notes%> </h6></br>
+      <h6 class="card-subtitle mb-2"> Classes:</h6>
+      <% @student.klasses.each do |klass| %>
+        <%= link_to klass.title, klass_path(klass)%></br>
+      <% end %>
+      <%= link_to "View Observations", students_observations_path(@student), class: "btn btn-primary show-top-margin" %>
+      <% if current_user.admin? %>
+        <td><%= link_to "Update", edit_admin_student_path(@student), class: "btn btn-primary show-top-margin" %></td>
+        <td><%= link_to "Delete", admin_student_path(@student), class: "btn btn-primary show-top-margin", method: :delete %></td>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

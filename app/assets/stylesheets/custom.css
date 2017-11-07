@@ -27,6 +27,10 @@ body {
   margin-top: 100px;
 }
 
+.show-top-margin {
+  margin-top: 40px;
+}
+
 .center-button {
   text-align: center;
 }
@@ -62,4 +66,19 @@ body {
   padding-top: 10px;
   font-size: 24px;
   text-align: center;
+}
+
+.show_styles {
+  padding: 20px;
+}
+
+.centered {
+  margin-left: 15%;
+}
+
+.show-title {
+  font-family: cursive;
+  font-weight: bolder;
+  padding-top: 10px;
+  font-size: 28px;
 }

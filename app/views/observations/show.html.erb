@@ -1,20 +1,21 @@
-
-<div class="card w-50">
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title"> Observation for <%= @observation.student.full_name %> </h4>
-      <h6 class="card-subtitle mb-2 text-muted"> Date:  <%= @observation.date %> </h6>
-      <h6 class="card-subtitle mb-2 text-muted"> Teacher: <%= @observation.user.full_name %> </h6>
-      <h6 class="card-subtitle mb-2 text-muted"> Subject: <%= @observation.subject%> </h6>
-      <h6 class="card-subtitle mb-2 text-muted"> Type: <%= @observation.ob_type %> </h6>
-      <h6 class="card-subtitle mb-2 text-muted"> Viewable by Parents? <%= @observation.parent_viewable %> </h6>
-      <h6 class="card-subtitle mb-2 text-muted"> Tone:  <%= @observation.tone %> </h6>
-      <p class="card-text"> <%= @observation.comment %> </p>
-      <%= link_to "Create New Observation", new_observation_path, class: "btn btn-link" %>
-      <% if observation_owner?(@observation) %>
-        <%= link_to "Update Observation", edit_observation_path, class: "btn btn-link" %>
-        <%= link_to "Delete Observation", observation_path(@observation), class: "btn btn-link", method: :delete %>
-      <%end %>
+<div class="container">
+  <div class="centered">
+    <div class="card w-75 text-center card-deck-margin show_styles card-border-styles">
+      <div class="card-block">
+        <h4 class="card-title show-title"> Observation for <%= @observation.student.full_name %> </h4>
+        <h6 class="card-subtitle mb-2"> Date:  <%= @observation.date %> </h6>
+        <h6 class="card-subtitle mb-2"> Teacher: <%= @observation.user.full_name %> </h6>
+        <h6 class="card-subtitle mb-2"> Subject: <%= @observation.subject%> </h6></br>
+        <h6 class="card-subtitle mb-2"> Type: <%= @observation.ob_type %> </h6>
+        <h6 class="card-subtitle mb-2"> Viewable by Parents? <%= @observation.parent_viewable %> </h6></br>
+        <h5 class="card-subtitle mb-2"> Tone:  <%= @observation.tone %> </h5></br>
+        <p class="card-text"> <%= @observation.comment %> </p>
+        <%= link_to "Create New Observation", new_observation_path, class: "btn btn-link" %>
+        <% if observation_owner?(@observation) %>
+          <%= link_to "Update Observation", edit_observation_path, class: "btn btn-link" %>
+          <%= link_to "Delete Observation", observation_path(@observation), class: "btn btn-link", method: :delete %>
+        <%end %>
+      </div>
     </div>
   </div>
 </div>
