@@ -10,7 +10,6 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     @user = User.new(user_params)
-    binding.pry
     if @user.save
       flash[:message] = "Account created for #{@user.full_name}"
 

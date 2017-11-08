@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
+  get '/parent_login', to: "parent_sessions#new"
+  post '/parent_login', to: "parent_sessions#create"
+  get '/parent_logout', to: "parent_sessions#destroy"
+
+  get '/parent_dashboard', to: "parent_dashboard#index"
+
   get '/dashboard', to: "dashboard#index"
   get '/auth/:provider/callback', to: 'sessions#create'
 

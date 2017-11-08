@@ -1,4 +1,6 @@
 class ObservationsController < ApplicationController
+  before_action :require_user
+
   def index
     @observations = current_user.observations
   end

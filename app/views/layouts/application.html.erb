@@ -12,7 +12,7 @@
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="nav-link" href="/">Student Tracker<span class="sr-only">(current)</span></a>
-          <% if logged_in? %>
+          <% if user_logged_in? %>
               <%= link_to "Logout", logout_path, class: "logout btn btn-link" %>
               <% if current_user.admin? %>
                 <%= link_to "View Dashboard", admin_dashboard_path, class: "btn btn-link" %>
@@ -20,9 +20,15 @@
                 <%= link_to "View Dashboard", dashboard_path, class: "btn btn-link" %>
               <% end %>
               <span class="navbar-text">Welcome <%= current_user.first_name %></span>
+          <% elsif parent_logged_in? %>
+            <%= link_to "Logout", parent_logout_path, class: "logout btn btn-link" %>
+            <%= link_to "View Dashboard", parent_dashboard_path, class: "btn btn-link" %>
+            <span class="navbar-text">Welcome <%= current_parent.first_name %></span>
+
           <% else %>
-              <%= link_to "Login", login_path, class: "btn btn-link" %>
-              <%= link_to "Sign in with Google", "/auth/google", class: "btn btn-link" %>
+              <%= link_to "Teacher Login", login_path, class: "btn btn-link" %>
+              <%= link_to "Teacher Sign in with Google", "/auth/google", class: "btn btn-link" %>
+              <%= link_to "Parent Login", parent_login_path, class: "btn btn-link" %>
           <% end %>
       </div>
     </nav>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106201032) do
+ActiveRecord::Schema.define(version: 20171108022819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 20171106201032) do
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
+  create_table "parents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "password_digest"
+  end
+
+  create_table "student_parents", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_student_parents_on_parent_id"
+    t.index ["student_id"], name: "index_student_parents_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -81,4 +96,6 @@ ActiveRecord::Schema.define(version: 20171106201032) do
   add_foreign_key "klasses", "users"
   add_foreign_key "observations", "students"
   add_foreign_key "observations", "users"
+  add_foreign_key "student_parents", "parents"
+  add_foreign_key "student_parents", "students"
 end

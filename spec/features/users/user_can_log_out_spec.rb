@@ -5,7 +5,7 @@ describe "As a registered user" do
     user = create(:user)
 
     visit '/'
-    click_link "Login"
+    click_on "Teacher Login"
 
     expect(current_path).to eq(login_path)
 
