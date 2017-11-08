@@ -12,7 +12,7 @@ class KlassesController < ApplicationController
     if current_user.admin?
       @klass = Klass.find(params[:id])
     else
-      @klass = current_user.classes.find(params[:id])
+      @klass = current_user.klasses.find(params[:id])
     end
   end
 end

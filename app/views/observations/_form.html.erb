@@ -4,11 +4,11 @@
       <h2 class="header-font card-title text-center">Your Observation</h2>
       <%= form_for [@observation] do |f| %>
         <%= f.label :student_id %>
-        <%= f.select :student_id, current_user.students.collect { |student| [ student.full_name, student.id] } %></br>
+        <%= f.select :student_id, @students.collect { |student| [ student.full_name, student.id] } %></br>
         <%= f.label :date %>
         <%= f.date_field :date %></br>
         <%= f.label :subject %>
-        <%= f.select :subject, options_for_select(current_user.klass_names) %></br>
+        <%= f.select :subject, options_for_select(@klass_names) %></br>
         <%= f.label :ob_type_strength, 'Strength' %>
         <%= f.radio_button :ob_type, 'Strength' %>
         <%= f.label :ob_type_neutral, 'Neutral' %>

@@ -11,6 +11,13 @@ class ObservationsController < ApplicationController
 
   def new
     @observation = Observation.new
+    if current_user.admin?
+      @students = Student.all
+      @klass_names = Klass.pluck(:title)
+    else
+      @students = current_user.students
+      @klass_names = current_user.klass_names
+    end
   end
 
   def create
@@ -27,6 +34,13 @@ class ObservationsController < ApplicationController
 
   def edit
     @observation = Observation.find(params[:id])
+    if current_user.admin?
+      @students = Student.all
+     @klass_names = Klass.pluck(:title)
+    else
+      @students = current_user.students
+      @klass_names = current_user.klass_names
+    end
   end
 
   def update
