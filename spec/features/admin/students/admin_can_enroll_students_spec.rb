@@ -14,9 +14,8 @@ describe "As an admin" do
     click_on "Enroll Student"
 
     expect(current_path).to eq(new_admin_enrollment_path)
-
     select("1", from: "enrollment_klass_id")
-    select("Johnny1 Jones", from: "enrollment_student_id")
+    select("Johnny3 Jones", from: "enrollment_student_id")
     click_on "Create Enrollment"
 
     expect(current_path).to eq(admin_dashboard_path)

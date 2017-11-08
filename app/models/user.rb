@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   def students
-    student_collections = klasses.map do |klass|
+    student_collections = klasses.includes(:students).map do |klass|
       klass.students
     end
     student_collections.flatten.uniq
