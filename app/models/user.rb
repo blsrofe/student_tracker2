@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :first_name, :last_name, presence: true
-  validates :password, presence: true, if: :password
+  validates :password, presence: true, :on => :create
   validates :email, presence: true, uniqueness: true
 
   enum role: ["teacher", "admin"]

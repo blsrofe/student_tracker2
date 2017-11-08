@@ -12,7 +12,6 @@ describe "User can visit their dashboard" do
       fill_in "First name", with: "John"
       fill_in "Last name", with: "Smith"
       fill_in "Email", with: "new@gmail.com"
-      fill_in "Password", with: "password"
       select("Teacher", from: 'user_role')
       click_on "Create Account"
 

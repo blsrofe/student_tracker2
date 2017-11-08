@@ -1,7 +1,8 @@
 <div class="container">
   <h1 class="header-font page-heading">Observations for <%= @student.full_name %> </h1>
-
-  <%= link_to "Create New Observation for #{@student.full_name}", new_observation_path, class: "btn btn-link link-font" %>
+  <% if current_user %>
+    <%= link_to "Create New Observation for #{@student.full_name}", new_observation_path, class: "btn btn-link link-font" %>
+  <% end %>
   <table class="table table-bordered table-hover table-color">
     <thead>
       <tr class="table-head-style">

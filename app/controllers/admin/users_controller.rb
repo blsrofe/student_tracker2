@@ -6,14 +6,16 @@ class Admin::UsersController < Admin::BaseController
 
   def new
     @user = User.new
+    @password = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
   end
 
   def create
     @user = User.new(user_params)
+    @password = @user.password
     if @user.save
       flash[:message] = "Account created for #{@user.full_name}"
 
-      AccountNotifierMailer.inform(@user).deliver_now
+      AccountNotifierMailer.inform(@user, @password).deliver_now
       redirect_to admin_dashboard_path
     else
       flash[:message] = "Account was not created. Try again!"

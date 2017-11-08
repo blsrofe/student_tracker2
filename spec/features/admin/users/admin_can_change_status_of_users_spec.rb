@@ -8,7 +8,6 @@ describe "As an admin" do
 
     visit admin_users_path
     expect(user.role).to eq("teacher")
-
     within(first(".user")) do
       click_on "Make Admin"
     end
