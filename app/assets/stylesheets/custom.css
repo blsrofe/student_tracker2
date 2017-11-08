@@ -82,3 +82,16 @@ body {
   padding-top: 10px;
   font-size: 28px;
 }
+
+body {
+  background-image: url(notebook.jpg);
+}
+
+.main_head {
+  font-family: cursive;
+  font-weight: bolder;
+  padding: 20px;
+  margin: 30px;
+  color: blue;
+  margin-left: 400px;
+}
