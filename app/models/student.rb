@@ -5,7 +5,7 @@ class Student < ApplicationRecord
   has_many :enrollments, dependent: :destroy
   has_many :klasses, through: :enrollments, dependent: :destroy
   has_many :observations, dependent: :destroy
-  has_many :student_parents
+  has_many :student_parents, dependent: :destroy
   has_many :parents, through: :student_parents
 
   def full_name
