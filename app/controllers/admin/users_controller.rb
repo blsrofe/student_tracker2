@@ -44,13 +44,4 @@ class Admin::UsersController < Admin::BaseController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
     end
-
-    def toggle_user(user)
-      if user.admin?
-        user.teacher!
-      elsif user.teacher?
-        user.admin!
-      end
-    end
-
 end
