@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="page-heading header-font">Dashboard for <%= current_parent.full_name %> </h1>
+
+    <div class="card-deck card-deck-margin">
+      <% @students.each do |student| %>
+      <div class="card w-50 text-center card-border-styles">
+        <div class="card-block">
+          <h2 class="card-title header-font"> student.full_name </h2>
+          <%= link_to "Observations", students_observations_path(student), class: "btn btn-link" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -13,7 +13,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
@@ -68,7 +68,7 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = { :host => 'https://student_tracker2.heroku.com' }
+  config.action_mailer.default_url_options = { host: 'student_tracker2.heroku.com' }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
