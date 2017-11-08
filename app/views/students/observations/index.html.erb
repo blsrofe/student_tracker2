@@ -13,8 +13,10 @@
         <th>Parent Viewable</th>
         <th>Author</th>
         <th>Full View</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <% if current_user %>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +29,11 @@
         <td> <%= observation.comment %></td>
         <td> <%= observation.parent_viewable %></td>
         <td> <%= observation.user.full_name %></td>
-        <td><%= link_to "View", observation_path(observation), class: "btn btn-primary" %></td>
+        <% if current_user %>
+          <td><%= link_to "View", observation_path(observation), class: "btn btn-primary" %></td>
+        <% else %>
+          <td><%= link_to "View", parent_show_path(observation), class: "btn btn-primary" %></td>
+        <% end %>
         <% if observation_owner?(observation) %>
           <td><%= link_to "Update", edit_observation_path(observation), class: "btn btn-primary" %></td>
           <td><%= link_to "Delete", observation_path(observation), class: "btn btn-primary", method: :delete %></td>

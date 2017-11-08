@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="centered">
+    <div class="card w-75 text-center card-deck-margin show_styles card-border-styles">
+      <div class="card-block">
+        <h4 class="card-title show-title"> Observation for <%= @observation.student.full_name %> </h4>
+        <h6 class="card-subtitle mb-2"> Date:  <%= @observation.date %> </h6>
+        <h6 class="card-subtitle mb-2"> Teacher: <%= @observation.user.full_name %> </h6>
+        <h6 class="card-subtitle mb-2"> Subject: <%= @observation.subject%> </h6></br>
+        <h6 class="card-subtitle mb-2"> Type: <%= @observation.ob_type %> </h6>
+        <p class="card-text"> <%= @observation.comment %> </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/parent_logout', to: "parent_sessions#destroy"
 
   get '/parent_dashboard', to: "parent_dashboard#index"
+  get '/parent_dashboard/:id', to: "parent_dashboard#show", as: 'parent_show'
 
   get '/dashboard', to: "dashboard#index"
   get '/auth/:provider/callback', to: 'sessions#create'

@@ -5,7 +5,7 @@
       <% @students.each do |student| %>
       <div class="card w-50 text-center card-border-styles">
         <div class="card-block">
-          <h2 class="card-title header-font"> student.full_name </h2>
+          <h2 class="card-title header-font"> <%= student.full_name %></h2>
           <%= link_to "Observations", students_observations_path(student), class: "btn btn-link" %>
         </div>
       </div>
